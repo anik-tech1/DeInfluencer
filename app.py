@@ -8,8 +8,8 @@ from datetime import datetime, timezone
 app = Flask(__name__)
 CORS(app)
 
-GEMINI_API_KEY  = "AIzaSyDzl2rPrAx-5A_sRUwVaXp1UZY4MyvHmB0"
-YOUTUBE_API_KEY = "AIzaSyCC9gjUv3MTGsIDk9HVpBYyUW86BnGMOC0"
+GEMINI_API_KEY  = "your-api-key"
+YOUTUBE_API_KEY = "your-youtube-api-key"
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-2.5-flash")
 
