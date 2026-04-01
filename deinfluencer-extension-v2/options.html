@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeInfluencer — Settings</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #07070f;
+      color: #e2e2ef;
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 48px 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .shield { font-size: 32px; }
+
+    .header-text h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #a78bfa, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-text p {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+
+    .card {
+      background: #0d0d17;
+      border: 1px solid #1e1e2e;
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6b7280;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field:last-child { margin-bottom: 0; }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #c4c4d4;
+      margin-bottom: 8px;
+    }
+
+    .field-hint {
+      font-size: 11px;
+      color: #4b5563;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      background: #0a0a14;
+      border: 1px solid #2e2e42;
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: #e2e2ef;
+      font-size: 13px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    input[type="password"]:focus,
+    input[type="text"]:focus {
+      border-color: #a78bfa;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .input-row input { flex: 1; }
+
+    .toggle-btn {
+      background: #1e1e2e;
+      border: 1px solid #2e2e42;
+      color: #6b7280;
+      border-radius: 8px;
+      padding: 0 12px;
+      cursor: pointer;
+      font-size: 14px;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+
+    .toggle-btn:hover { background: #2e2e42; color: #e2e2ef; }
+
+    .link-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .link-row a {
+      font-size: 11px;
+      color: #6b7280;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.15s;
+    }
+
+    .link-row a:hover { color: #a78bfa; }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .btn-primary {
+      flex: 1;
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 11px 20px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-secondary {
+      background: #1e1e2e;
+      border: 1px solid #2e2e42;
+      border-radius: 10px;
+      color: #9ca3af;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 11px 20px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-secondary:hover { background: #2e2e42; color: #e2e2ef; }
+
+    .status {
+      margin-top: 16px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      display: none;
+    }
+
+    .status.success {
+      background: #052e16;
+      border: 1px solid #166534;
+      color: #4ade80;
+      display: block;
+    }
+
+    .status.error {
+      background: #1c0a0a;
+      border: 1px solid #7f1d1d;
+      color: #f87171;
+      display: block;
+    }
+
+    .info-card {
+      background: #080814;
+      border: 1px solid #1e1e2e;
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    .info-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px solid #111122;
+      font-size: 12px;
+    }
+
+    .info-row:last-child { border-bottom: none; }
+
+    .info-key { color: #6b7280; }
+    .info-val { color: #9ca3af; font-family: monospace; }
+    .info-val.ok { color: #4ade80; }
+    .info-val.missing { color: #f87171; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="shield">🛡</div>
+      <div class="header-text">
+        <h1>DeInfluencer</h1>
+        <p>API Key Configuration</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">API Keys</div>
+
+      <div class="field">
+        <label for="gemini-key">Gemini API Key</label>
+        <div class="field-hint">Powers AI analysis of trust scores, product claims &amp; manipulation tactics.</div>
+        <div class="input-row">
+          <input type="password" id="gemini-key" placeholder="AIzaSy…" autocomplete="off">
+          <button class="toggle-btn" id="toggle-gemini">👁</button>
+        </div>
+        <div class="link-row">
+          <a href="https://aistudio.google.com/app/apikey" target="_blank">🔑 Get Gemini key</a>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="yt-key">YouTube Data API v3 Key</label>
+        <div class="field-hint">Fetches video metadata (title, views, channel info). Free tier = 10,000 units/day.</div>
+        <div class="input-row">
+          <input type="password" id="yt-key" placeholder="AIzaSy…" autocomplete="off">
+          <button class="toggle-btn" id="toggle-yt">👁</button>
+        </div>
+        <div class="link-row">
+          <a href="https://console.cloud.google.com/apis/library/youtube.googleapis.com" target="_blank">🔑 Get YouTube key</a>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-primary" id="btn-save">Save Keys</button>
+        <button class="btn-secondary" id="btn-clear">Clear</button>
+      </div>
+
+      <div id="status" class="status"></div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-title">Key Status</div>
+      <div class="info-row">
+        <span class="info-key">Gemini API</span>
+        <span class="info-val" id="status-gemini">checking…</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">YouTube API</span>
+        <span class="info-val" id="status-yt">checking…</span>
+      </div>
+      <div class="info-row">
+        <span class="info-key">Extension Version</span>
+        <span class="info-val">1.0.0</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
