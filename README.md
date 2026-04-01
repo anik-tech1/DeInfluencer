@@ -16,7 +16,7 @@
                                           │  │  YouTube API v3 │  │
 ┌─────────────────┐       HTTP/JSON       │  └─────────────────┘  │
 │ Browser         │ ◄───────────────────► │  ┌─────────────────┐  │
-│ Extension       │                       │  │   Gemini 1.5    │  │
+│ Extension       │                       │  │   Gemini 2.5    │  │
 └─────────────────┘                       │  │   Flash API     │  │
                                           │  └─────────────────┘  │
                                           └───────────────────────┘
@@ -205,8 +205,8 @@ Health check — returns `{"status": "ok"}`.
 
 - YouTube Data API v3 has a **daily quota of 10,000 units** (free tier).
   Each search costs ~100 units; each video detail fetch costs ~1 unit.
-- Gemini 1.5 Flash is used for its speed and cost-efficiency.
-  Upgrade to `gemini-1.5-pro` for more nuanced analysis.
+- Gemini 2.5 Flash is used for its speed and cost-efficiency.
+  Upgrade to `gemini-2.5-pro` for more nuanced analysis.
 - Analysis is AI-generated and should not be the sole basis for purchase decisions.
 - The browser extension requires the Flask backend to be running locally.
 
